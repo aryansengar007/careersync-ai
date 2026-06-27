@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# React Router uses client-side (BrowserRouter) routing, so every path needs
+# to fall back to index.html — otherwise refreshing on /dashboard, /resume-builder,
+# etc. (or sharing a direct link to them) returns a Netlify 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
